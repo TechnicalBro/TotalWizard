@@ -30,16 +30,9 @@ public class Blink extends Spell
 		ParticleEffects PE = ParticleEffects.LARGE_SMOKE;
 		try
 		{
-			Location Tele = new Location(Player.getWorld(),Eyes.getX(),Eyes.getY(),Eyes.getZ(),Player.getLocation().getPitch(),Player.getLocation().getYaw());
-			Tele.setX(Eyes.getX());
-			Tele.setY(Eyes.getY() + 1);
-			Tele.setZ(Eyes.getZ());
-			float Pitch = Player.getLocation().getPitch();
-			float Yaw = Player.getLocation().getYaw();
+			Location Tele = new Location(Player.getWorld(),Eyes.getX(),Eyes.getY() + 1,Eyes.getZ(),Player.getLocation().getPitch(),Player.getLocation().getYaw());
 			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(10));
 			Player.teleport(Tele, TeleportCause.PLUGIN);
-			Player.getLocation().setPitch(Pitch);
-			Player.getLocation().setYaw(Yaw);
 			PE.sendToAll(Eyes, new Random().nextFloat(), 10 + new Random().nextInt(10));
 			return true;
 		}

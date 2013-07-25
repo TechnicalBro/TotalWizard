@@ -42,8 +42,9 @@ public class AnimatedDeadMinor extends Spell
 				}
 				else
 				{
-					Zombie.setTarget(E);
-					return true;
+					Player.sendMessage("There's no target for the zombie-ling to attack...");
+					Zombie.remove();
+					return false;
 				}
 			}
 		}

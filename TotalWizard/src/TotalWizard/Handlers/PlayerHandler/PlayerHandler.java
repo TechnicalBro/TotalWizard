@@ -13,6 +13,5 @@ public class PlayerHandler
 	public boolean canCast(SpellType Spell)
 	{
 		return false;
-		
 	}
 }
