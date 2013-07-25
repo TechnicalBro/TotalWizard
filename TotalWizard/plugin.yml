@@ -1,0 +1,4 @@
+name: TotalWizard
+main: TotalWizard.TotalWizard
+version: 1.5
+depend: [Vault,SkillSystem,WorldGuard]
