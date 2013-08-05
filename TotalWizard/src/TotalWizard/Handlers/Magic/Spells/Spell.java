@@ -54,7 +54,6 @@ public abstract class Spell
 	                        {
 	                            if (entity.getLocation().getBlock().getRelative(x, y, z).equals(item))
 	                            {
-	                                //entity.setVelocity(new Vector(0, 1, 0));
 	                                return ((LivingEntity)entity);
 	                            }
 	                        }

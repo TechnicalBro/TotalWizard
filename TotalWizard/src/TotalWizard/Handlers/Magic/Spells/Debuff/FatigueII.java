@@ -34,15 +34,6 @@ public class FatigueII extends Spell
 		ParticleEffects PE = ParticleEffects.SLIME;
 		try
 		{
-			/*for(LivingEntity Entity : this.getEntitiesNearLocation(Eyes, 4))
-			{
-				if (!Entity.hasMetadata("NPC"))
-				{
-					Entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, (int) (120 + TotalWizard.MagicHandler.getBonus(SpellType.Fatigue, Player.getName())), 2));
-					Entity.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, (int) (120 + TotalWizard.MagicHandler.getBonus(SpellType.Fatigue, Player.getName())), 2));
-					Entity.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, (int) (140 + TotalWizard.MagicHandler.getBonus(SpellType.Fatigue, Player.getName())), 2));
-				}
-			}*/
 			LivingEntity E = this.getEntityInSight(Player);
 			if (this.getEntityInSight(Player) != null)
 			{

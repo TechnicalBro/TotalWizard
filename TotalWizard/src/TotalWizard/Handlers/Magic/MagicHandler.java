@@ -31,6 +31,7 @@ public class MagicHandler
 	//Spells Registry
 	private CombustI CombustI = new CombustI();
 	private CombustII CombustII = new CombustII();
+	private IgniteI IgniteI = new IgniteI();
 	
 	private FatigueI FatigueI = new FatigueI();
 	private FatigueII FatigueII = new FatigueII();
@@ -44,6 +45,10 @@ public class MagicHandler
 	
 	private SpeedI SpeedI = new SpeedI();
 	private SpeedII SpeedII = new SpeedII();
+	
+	private MinerI MinerI = new MinerI();
+	
+	private Vampirism Vampirism = new Vampirism();
 	
 	private FeedI FeedI = new FeedI();
 	
@@ -108,11 +113,28 @@ public class MagicHandler
 		
 		Spells.put(PiercingBarrage.getName(), PiercingBarrage);
 		
+		Spells.put(IgniteI.getName(), IgniteI);
+		
+		Spells.put(MinerI.getName(), MinerI);
+		
+		Spells.put(Vampirism.getName(), Vampirism);
+		
 	}
 	
 	public enum SpellType
 	{
-		LightningStrike,Fatigue,Combust,Healing,Speed,Feed,Teleport,Hadouken,Vanish,Protection
+		LightningStrike,
+		Fatigue,
+		Combust,
+		Healing,
+		Speed,
+		Feed,
+		Teleport,
+		Hadouken,
+		Vanish,
+		Protection,
+		Ignite,
+		Vampirism
 	}
 	
 	/**
@@ -263,6 +285,10 @@ public class MagicHandler
 				return ((int)MagicLevel * 2);
 			case Protection:
 				return ((int)MagicLevel * 3);
+			case Ignite:
+				return ((int)MagicLevel * 2);
+			case Vampirism:
+				return ((int)MagicLevel * 2.3);
 			default:
 				return 0;
 		}
