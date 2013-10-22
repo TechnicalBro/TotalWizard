@@ -9,33 +9,34 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import TotalWizard.TotalWizard;
 import TotalWizard.Handlers.EffectHandlers.ParticleEffects;
 import TotalWizard.Handlers.Magic.MagicHandler.SpellType;
 import TotalWizard.Handlers.Magic.Spells.Spell;
-import TotalWizard.TotalWizard;
 
-public class AuraOfProtection extends Spell
+public class SpeedII extends Spell
 {
 
 	@Override
 	public String getName()
 	{
-		return "Aura of Protection";
+		return "Speed II";
 	}
 
 	@Override
 	public boolean Cast(Player Player)
 	{
-		ParticleEffects PE = ParticleEffects.ENCHANTMENT_TABLE;
+		ParticleEffects PE = ParticleEffects.BUBBLE;
 		try
 		{
-			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(10));
-			Player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,(int)(160 + TotalWizard.MagicHandler.getBonus(SpellType.Protection, Player.getName())), 1));
+			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 15 + new Random().nextInt(25));
+			Player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,(int) (240 + TotalWizard.MagicHandler.getBonus(SpellType.Speed, Player.getName())),2));
+			Player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (int) (240 + TotalWizard.MagicHandler.getBonus(SpellType.Speed, Player.getName())),1));
 			return true;
 		}
-		catch (Exception Ex)
+		catch (Exception e)
 		{
-			Ex.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -43,13 +44,13 @@ public class AuraOfProtection extends Spell
 	@Override
 	public int getLevelRequirement()
 	{
-		return 7;
+		return 10;
 	}
 
 	@Override
 	public int getManaRequirement()
 	{
-		return 20;
+		return 17;
 	}
 
 	@Override
@@ -61,13 +62,13 @@ public class AuraOfProtection extends Spell
 	@Override
 	public String[] getDescription()
 	{
-		return new String[] {ChatColor.YELLOW + "Surround yourself in a shield of mana",ChatColor.YELLOW + "and weaken incoming damage",ChatColor.RED + "Requires level 7 magic, costs 20 mana" };
+		return new String[] {ChatColor.YELLOW + "Give yourself the speed of the wind, and weight of air",ChatColor.YELLOW + "to outrun and outjump your foes",ChatColor.RED + "Requires level 10 magic, costs 17 mana" };
 	}
-
+	
 	@Override
 	public MaterialData getMaterialData()
 	{
-		return new MaterialData(Material.IRON_CHESTPLATE);
+		return new MaterialData(Material.INK_SACK, (byte)12);
 	}
 
 }

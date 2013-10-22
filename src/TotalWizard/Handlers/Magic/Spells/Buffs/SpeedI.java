@@ -9,33 +9,33 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import TotalWizard.TotalWizard;
 import TotalWizard.Handlers.EffectHandlers.ParticleEffects;
 import TotalWizard.Handlers.Magic.MagicHandler.SpellType;
 import TotalWizard.Handlers.Magic.Spells.Spell;
-import TotalWizard.TotalWizard;
 
-public class AuraOfProtection extends Spell
+public class SpeedI extends Spell
 {
 
 	@Override
 	public String getName()
 	{
-		return "Aura of Protection";
+		return "Speed I";
 	}
 
 	@Override
 	public boolean Cast(Player Player)
 	{
-		ParticleEffects PE = ParticleEffects.ENCHANTMENT_TABLE;
+		Player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,(int) (120 + TotalWizard.MagicHandler.getBonus(SpellType.Speed, Player.getName())),2));
+		ParticleEffects PE = ParticleEffects.BUBBLE;
 		try
 		{
-			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(10));
-			Player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,(int)(160 + TotalWizard.MagicHandler.getBonus(SpellType.Protection, Player.getName())), 1));
+			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(15));
 			return true;
 		}
-		catch (Exception Ex)
+		catch (Exception e)
 		{
-			Ex.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -43,31 +43,31 @@ public class AuraOfProtection extends Spell
 	@Override
 	public int getLevelRequirement()
 	{
-		return 7;
+		return 1;
 	}
 
 	@Override
 	public int getManaRequirement()
 	{
-		return 20;
+		return 7;
 	}
 
 	@Override
 	public int getCastExp()
 	{
-		return 14;
+		return 4;
 	}
 
 	@Override
 	public String[] getDescription()
 	{
-		return new String[] {ChatColor.YELLOW + "Surround yourself in a shield of mana",ChatColor.YELLOW + "and weaken incoming damage",ChatColor.RED + "Requires level 7 magic, costs 20 mana" };
+		return new String[] {ChatColor.YELLOW + "Give yourself the speed of the wind to outrun foes",ChatColor.RED + "Requires level 1 magic, costs 7 mana"};
 	}
 
 	@Override
 	public MaterialData getMaterialData()
 	{
-		return new MaterialData(Material.IRON_CHESTPLATE);
+		return new MaterialData(Material.INK_SACK, (byte)12);
 	}
 
 }

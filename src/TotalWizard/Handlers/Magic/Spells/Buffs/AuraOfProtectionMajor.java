@@ -14,13 +14,13 @@ import TotalWizard.Handlers.Magic.MagicHandler.SpellType;
 import TotalWizard.Handlers.Magic.Spells.Spell;
 import TotalWizard.TotalWizard;
 
-public class AuraOfProtection extends Spell
+public class AuraOfProtectionMajor extends Spell
 {
 
 	@Override
 	public String getName()
 	{
-		return "Aura of Protection";
+		return "Aura of Protection II";
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class AuraOfProtection extends Spell
 		try
 		{
 			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(10));
-			Player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,(int)(160 + TotalWizard.MagicHandler.getBonus(SpellType.Protection, Player.getName())), 1));
+			Player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,(int)(360 + TotalWizard.MagicHandler.getBonus(SpellType.Protection, Player.getName())), 2));
 			return true;
 		}
 		catch (Exception Ex)
@@ -43,25 +43,25 @@ public class AuraOfProtection extends Spell
 	@Override
 	public int getLevelRequirement()
 	{
-		return 7;
+		return 28;
 	}
 
 	@Override
 	public int getManaRequirement()
 	{
-		return 20;
+		return 35;
 	}
 
 	@Override
 	public int getCastExp()
 	{
-		return 14;
+		return 32;
 	}
 
 	@Override
 	public String[] getDescription()
 	{
-		return new String[] {ChatColor.YELLOW + "Surround yourself in a shield of mana",ChatColor.YELLOW + "and weaken incoming damage",ChatColor.RED + "Requires level 7 magic, costs 20 mana" };
+		return new String[] {ChatColor.YELLOW + "Surround yourself in a shield of mana",ChatColor.YELLOW + "and deaden incoming damage",ChatColor.RED + "Requires level 28 magic, costs 35 mana" };
 	}
 
 	@Override

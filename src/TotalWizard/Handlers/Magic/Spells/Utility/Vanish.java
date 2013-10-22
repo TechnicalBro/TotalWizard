@@ -1,4 +1,4 @@
-package TotalWizard.Handlers.Magic.Spells.Buffs;
+package TotalWizard.Handlers.Magic.Spells.Utility;
 
 import java.util.Random;
 
@@ -12,30 +12,28 @@ import org.bukkit.potion.PotionEffectType;
 import TotalWizard.Handlers.EffectHandlers.ParticleEffects;
 import TotalWizard.Handlers.Magic.MagicHandler.SpellType;
 import TotalWizard.Handlers.Magic.Spells.Spell;
-import TotalWizard.TotalWizard;
 
-public class AuraOfProtection extends Spell
+public class Vanish extends Spell
 {
 
 	@Override
 	public String getName()
 	{
-		return "Aura of Protection";
+		return "Vanish";
 	}
 
 	@Override
 	public boolean Cast(Player Player)
 	{
-		ParticleEffects PE = ParticleEffects.ENCHANTMENT_TABLE;
+		ParticleEffects PE = ParticleEffects.LARGE_SMOKE;
 		try
 		{
-			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(10));
-			Player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,(int)(160 + TotalWizard.MagicHandler.getBonus(SpellType.Protection, Player.getName())), 1));
+			PE.sendToAll(Player.getLocation(), new Random().nextFloat(), 10 + new Random().nextInt(20));
+			Player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY,(int) (60 + TotalWizard.TotalWizard.MagicHandler.getBonus(SpellType.Vanish, Player.getName())),1));
 			return true;
 		}
 		catch (Exception Ex)
 		{
-			Ex.printStackTrace();
 			return false;
 		}
 	}
@@ -43,31 +41,31 @@ public class AuraOfProtection extends Spell
 	@Override
 	public int getLevelRequirement()
 	{
-		return 7;
+		return 5;
 	}
 
 	@Override
 	public int getManaRequirement()
 	{
-		return 20;
+		return 15;
 	}
 
 	@Override
 	public int getCastExp()
 	{
-		return 14;
+		return 10;
 	}
 
 	@Override
 	public String[] getDescription()
 	{
-		return new String[] {ChatColor.YELLOW + "Surround yourself in a shield of mana",ChatColor.YELLOW + "and weaken incoming damage",ChatColor.RED + "Requires level 7 magic, costs 20 mana" };
+		return new String[] {ChatColor.YELLOW + "Stealth yourself and sneak upon foes",ChatColor.RED + "Requires level 5 magic, costs 15 mana" };
 	}
-
+	
 	@Override
 	public MaterialData getMaterialData()
 	{
-		return new MaterialData(Material.IRON_CHESTPLATE);
+		return new MaterialData(Material.INK_SACK, (byte)11);
 	}
 
 }
